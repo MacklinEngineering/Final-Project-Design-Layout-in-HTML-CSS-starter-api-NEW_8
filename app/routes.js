@@ -1,6 +1,19 @@
 module.exports = function (app, passport, db) {
 
   const ObjectId = require('mongodb').ObjectID
+  const multer = require('multer')
+
+  // Image Upload Code =========================================================================
+  // Make a Var for the storing of imgs => multer.(multer Method?)
+  var storage = multer.diskStorage({
+      destination: (req, file, cb) => {    //What is cb? ... Maybe filepath
+        cb(null, 'public/images/uploads')
+      },
+      filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + ".png")  // cb filepath and timestamp with date and filetype
+      }
+  });
+  var upload = multer({storage: storage}); //upload img to destination 'storage'
 
 
   // normal routes ===============================================================
@@ -203,12 +216,14 @@ module.exports = function (app, passport, db) {
 
   // message board routes ===============================================================
 
-  app.post('/listings', (req, res) => {
-    console.log(req.body)
-    db.collection('Listings').save({email: req.body.Email,
-      itemTitle: req.body.ItemTitle, itemlocation: req.body.ItemLocation, itemdescription: req.body.ItemDescription, Date: req.body.Date}, (err, result) => {
+  app.post('/listings', isLoggedIn, upload.single("file-to-upload"), (req, res) => {
+    console.log(req.file.filename)
+    let uid = ObjectId(req.session.passport.user)
+    db.collection('Listings').save({posterID: uid, image: 'images/uploads/' + req.file.filename, email: req.body.Email,
+      itemTitle: req.body.ItemTitle, itemlocation: req.body.ItemLocation, itemdescription: req.body.ItemDescription, Date: new Date()}, (err, result) => {
           if (err) return res.send(err)
-          res.send(result)
+          // res.send(result)
+          res.redirect('/job-listings');
     })
 
   })

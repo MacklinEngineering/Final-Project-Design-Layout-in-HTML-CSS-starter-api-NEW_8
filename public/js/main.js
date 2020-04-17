@@ -3,7 +3,7 @@
 // var searchItemForm = document.getElementsByClassName("search-jobs-form")[0]
 // var searchItemButton = document.getElementById("searchItemButton")
 
-if (document.getElementById("postItemButton") ){
+if (false && document.getElementById("postItemButton") ){
   var postItemButton = document.getElementById("postItemButton");
   postItemButton.addEventListener("click", function(){
     alert("Your information has been submitted!")

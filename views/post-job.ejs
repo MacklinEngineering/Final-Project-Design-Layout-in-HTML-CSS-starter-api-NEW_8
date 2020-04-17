@@ -132,27 +132,27 @@
         </div>
         <div class="row mb-5">
           <div class="col-lg-12">
-            <form class="p-4 p-md-5 border rounded" method="post">
+            <form class="p-4 p-md-5 border rounded" method="post" action="/listings" enctype="multipart/form-data" >
               <h3 class="text-black mb-5 border-bottom pb-2">Item Details</h3>
 
-              <!-- <div class="form-group">
+              <div class="form-group">
                 <label for="company-website-tw d-block">Upload Image</label> <br>
                 <label class="btn btn-primary btn-md btn-file">
-                  Browse File<input type="file" hidden>
+                  Browse File<input type="file" hidden name="file-to-upload">
                 </label>
-              </div> -->
+              </div>
 
               <div class="form-group">
                 <label for="email">Your Email (Users Will Contact You Here)</label>
-                <input type="text" class="form-control" id="email" placeholder="eg. Person@CommunalApp.com">
+                <input type="text" class="form-control" id="email" placeholder="eg. Person@CommunalApp.com" name="Email">
               </div>
               <div class="form-group">
                 <label for="Item-title">Item Title</label>
-                <input type="text" class="form-control" id="job-title" placeholder="eg. Masks">
+                <input type="text" class="form-control" id="job-title" placeholder="eg. Masks" name="ItemTitle">
               </div>
               <div class="form-group">
                 <label for="job-location">City</label>
-                <input type="text" class="form-control" id="job-location" placeholder="eg. Boston">
+                <input type="text" class="form-control" id="job-location" placeholder="eg. Boston" name="ItemLocation">
               </div>
 
               <!-- <div class="form-group">
@@ -185,7 +185,7 @@
 
               <div class="form-group">
                 <label for="job-description">Item Description</label>
-                <input type="text" class="form-control" id="editor-1" placeholder="Describe What You Are Giving">
+                <input type="text" class="form-control" id="editor-1" placeholder="Describe What You Are Giving" name="ItemDescription">
                 <!-- <div class="editor" id="editor-1"> -->
                   <!-- <p>Write Item Description!</p> -->
                 <!-- </div> -->
@@ -236,26 +236,27 @@
                 </label>
               </div> -->
 
+              <div class="row align-items-center mb-5">
 
+                <div class="col-lg-4 ml-auto">
+                  <div class="row">
+                    <div class="col-6">
+                      <!-- <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a> -->
+                    </div>
+                    <div class="col-6">
+                      <!-- <button href="#" class="btn btn-block btn-primary btn-md" id="postItemButton">Post Item</button> -->
+                      <input type="submit" value="Post Item" href="#" class="btn btn-block btn-primary btn-md" id="postItemButton"></input>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </form>
           </div>
 
 
         </div>
-        <div class="row align-items-center mb-5">
 
-          <div class="col-lg-4 ml-auto">
-            <div class="row">
-              <div class="col-6">
-                <!-- <a href="#" class="btn btn-block btn-light btn-md"><span class="icon-open_in_new mr-2"></span>Preview</a> -->
-              </div>
-              <div class="col-6">
-                <button href="#" class="btn btn-block btn-primary btn-md" id="postItemButton">Post Item</button>
-              </div>
-
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
